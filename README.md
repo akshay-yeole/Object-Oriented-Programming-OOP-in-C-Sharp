@@ -15,7 +15,7 @@ This beginner-friendly resource helps you understand the four core principles of
 
 **Encapsulation** means bundling data (fields) and methods that operate on that data into a single unit — usually a class. It also restricts direct access to some of the object’s components.
 
-### ✅ Benefits of Encapsulation
+### ✅ Benefits
 
 - Protects internal object state.
 - Enables validation logic.
@@ -29,10 +29,7 @@ public class BankAccount
 {
     private decimal balance;
 
-    public decimal GetBalance()
-    {
-        return balance;
-    }
+    public decimal GetBalance() => balance;
 
     public void Deposit(decimal amount)
     {
@@ -50,14 +47,14 @@ public class BankAccount
 
 **Abstraction** is about exposing only essential features while hiding internal implementation details.
 
-### ✅ Benefits of Abstraction
+### ✅ Benefits
 
 - Simplifies code interaction.
 - Reduces complexity.
 - Enhances security and modularity.
 - Promotes loose coupling.
 
-### 💻 Example 1: Abstract Class
+### 💻 Example: Abstract Class
 
 ```csharp
 public abstract class Shape
@@ -74,15 +71,9 @@ public class Circle : Shape
 {
     public double Radius { get; set; }
 
-    public Circle(double radius)
-    {
-        Radius = radius;
-    }
+    public Circle(double radius) => Radius = radius;
 
-    public override double GetArea()
-    {
-        return Math.PI * Radius * Radius;
-    }
+    public override double GetArea() => Math.PI * Radius * Radius;
 }
 
 // Usage
@@ -90,7 +81,7 @@ var circle = new Circle(5);
 circle.Display();  // Output: Area: 78.54
 ```
 
-### 💻 Example 2: Interface
+### 💻 Example: Interface
 
 ```csharp
 public interface IShape
@@ -131,24 +122,18 @@ rectangle.Display();  // Output: Area: 24
 ```csharp
 public class Animal
 {
-    public void Eat()
-    {
-        Console.WriteLine("Eating...");
-    }
+    public void Eat() => Console.WriteLine("Eating...");
 }
 
 public class Dog : Animal
 {
-    public void Bark()
-    {
-        Console.WriteLine("Barking...");
-    }
+    public void Bark() => Console.WriteLine("Barking...");
 }
 
 // Usage
-Dog dog = new Dog();
-dog.Eat();  // From base class
-dog.Bark(); // From derived class
+var dog = new Dog();
+dog.Eat();
+dog.Bark();
 ```
 
 ### ✅ Key Points
@@ -158,7 +143,7 @@ dog.Bark(); // From derived class
 - C# supports **single inheritance**.
 - Public and protected members are accessible in derived classes.
 
-**Hierarchy Example:**
+### 📊 Hierarchy
 
 ```
 Animal
@@ -167,19 +152,15 @@ Animal
 
 ---
 
-# 🧬 Types of Inheritance in C#
+## 🧬 Types of Inheritance in C#
 
-C# supports several types of inheritance, allowing one class to derive from another. This promotes code reusability and organized software design.
-
-> ⚠️ Note: C# supports **single inheritance** only for classes, but **multiple inheritance** is possible using interfaces.
+C# supports several types of inheritance. While **classes** support only single inheritance, **interfaces** allow multiple inheritance.
 
 ---
 
-## 1. 🔹 Single Inheritance
+### 1. 🔹 Single Inheritance
 
 A class inherits from one base class.
-
-### 💻 Example:
 
 ```csharp
 public class Animal
@@ -194,17 +175,15 @@ public class Dog : Animal
 
 // Usage
 var dog = new Dog();
-dog.Eat();  // Inherited
-dog.Bark(); // Own method
+dog.Eat();
+dog.Bark();
 ```
 
 ---
 
-## 2. 🔹 Multilevel Inheritance
+### 2. 🔹 Multilevel Inheritance
 
-A class is derived from a class which is also derived from another class.
-
-### 💻 Example:
+A class is derived from a class that is also derived from another class.
 
 ```csharp
 public class Animal
@@ -231,11 +210,9 @@ human.Speak();
 
 ---
 
-## 3. 🔹 Hierarchical Inheritance
+### 3. 🔹 Hierarchical Inheritance
 
 Multiple classes inherit from the same base class.
-
-### 💻 Example:
 
 ```csharp
 public class Animal
@@ -265,11 +242,9 @@ cat.Meow();
 
 ---
 
-## 4. 🔹 Multiple Inheritance (via Interfaces)
+### 4. 🔹 Multiple Inheritance (via Interfaces)
 
-C# does not support multiple class inheritance directly. However, multiple interfaces can be implemented by a single class.
-
-### 💻 Example:
+C# doesn't support multiple class inheritance directly but allows multiple interfaces.
 
 ```csharp
 public interface IWork
@@ -296,36 +271,35 @@ person.DoStudy();
 
 ---
 
-## 5. 🔹 Hybrid Inheritance
+### 5. 🔹 Hybrid Inheritance
 
-Hybrid inheritance is a combination of two or more types of inheritance. Though C# doesn’t support hybrid inheritance through classes due to ambiguity (diamond problem), it can be mimicked using interfaces.
+A combination of two or more inheritance types. Achievable using interfaces in C#.
 
 ---
 
 ## ✅ Summary Table
 
-| Type         | Supported in C# | Method               |
-|--------------|------------------|----------------------|
-| Single       | ✅               | Classes              |
-| Multilevel   | ✅               | Classes              |
-| Hierarchical | ✅               | Classes              |
-| Multiple     | ✅               | Interfaces           |
-| Hybrid       | ⚠️ (Limited)     | Interfaces & Classes |
+| Type         | Supported | Implementation         |
+|--------------|-----------|------------------------|
+| Single       | ✅        | Classes                |
+| Multilevel   | ✅        | Classes                |
+| Hierarchical | ✅        | Classes                |
+| Multiple     | ✅        | Interfaces             |
+| Hybrid       | ⚠️ Limited | Classes + Interfaces  |
 
 ---
 
-## 📌 Note on Diamond Problem
+### 📌 Note on Diamond Problem
 
-In languages that support multiple class inheritance (like C++), a class may inherit from two classes that share a common base class, leading to ambiguity.  
-C# avoids this issue by not supporting multiple class inheritance, encouraging interface usage instead.
+C# avoids the diamond problem by not allowing multiple class inheritance. Instead, it encourages the use of interfaces.
 
 ---
 
 ## 🎭 Polymorphism
 
-**Polymorphism** allows objects to be treated as instances of their parent class rather than their actual class, enabling method overriding and flexibility.
+**Polymorphism** allows objects to be treated as instances of their parent class rather than their actual class.
 
-🔜 Full section on Polymorphism coming soon with:
+🔜 Coming soon with:
 
 - ✅ Clear explanations  
 - 💡 Real-world examples  
@@ -335,37 +309,25 @@ C# avoids this issue by not supporting multiple class inheritance, encouraging i
 
 ## 📂 Upcoming Content
 
-We’re working on adding more practical OOP sections:
-
-- 🎭 Full Polymorphism examples
+- 🎭 Polymorphism in depth
 - 🏗 SOLID Principles
 - 🧪 Unit Testing with OOP
 - 🔁 Composition vs Inheritance
-
-Stay tuned!
 
 ---
 
 ## 📧 Contact
 
-Have feedback or want to collaborate?
-
 - 📫 Email: [akshay-yeole@outlook.com](mailto:akshay-yeole@outlook.com)  
 - 💼 LinkedIn: [Akshay Yeole](https://www.linkedin.com/in/akshayyeole)
 
-Feel free to open an issue or pull request if you'd like to contribute or suggest improvements.
-
 ---
 
-## ⭐️ Support the Project
+## ⭐️ Support
 
-If you find this project helpful:
+If this helped you:
 
-- Star ⭐ the repository
-- Share with fellow C# learners or developers
-
-Your support inspires continuous improvement and learning resources!
-
----
+- Star ⭐ the repo
+- Share with other C# learners
 
 > Made with 💻 by Akshay Yeole
