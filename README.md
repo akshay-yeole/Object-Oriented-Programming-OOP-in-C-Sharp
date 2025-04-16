@@ -167,6 +167,160 @@ Animal
 
 ---
 
+# 🧬 Types of Inheritance in C#
+
+C# supports several types of inheritance, allowing one class to derive from another. This promotes code reusability and organized software design.
+
+> ⚠️ Note: C# supports **single inheritance** only for classes, but **multiple inheritance** is possible using interfaces.
+
+---
+
+## 1. 🔹 Single Inheritance
+
+A class inherits from one base class.
+
+### 💻 Example:
+
+```csharp
+public class Animal
+{
+    public void Eat() => Console.WriteLine("Eating...");
+}
+
+public class Dog : Animal
+{
+    public void Bark() => Console.WriteLine("Barking...");
+}
+
+// Usage
+var dog = new Dog();
+dog.Eat();  // Inherited
+dog.Bark(); // Own method
+```
+
+---
+
+## 2. 🔹 Multilevel Inheritance
+
+A class is derived from a class which is also derived from another class.
+
+### 💻 Example:
+
+```csharp
+public class Animal
+{
+    public void Eat() => Console.WriteLine("Eating...");
+}
+
+public class Mammal : Animal
+{
+    public void Walk() => Console.WriteLine("Walking...");
+}
+
+public class Human : Mammal
+{
+    public void Speak() => Console.WriteLine("Speaking...");
+}
+
+// Usage
+var human = new Human();
+human.Eat();
+human.Walk();
+human.Speak();
+```
+
+---
+
+## 3. 🔹 Hierarchical Inheritance
+
+Multiple classes inherit from the same base class.
+
+### 💻 Example:
+
+```csharp
+public class Animal
+{
+    public void Eat() => Console.WriteLine("Eating...");
+}
+
+public class Dog : Animal
+{
+    public void Bark() => Console.WriteLine("Barking...");
+}
+
+public class Cat : Animal
+{
+    public void Meow() => Console.WriteLine("Meowing...");
+}
+
+// Usage
+var dog = new Dog();
+dog.Eat();
+dog.Bark();
+
+var cat = new Cat();
+cat.Eat();
+cat.Meow();
+```
+
+---
+
+## 4. 🔹 Multiple Inheritance (via Interfaces)
+
+C# does not support multiple class inheritance directly. However, multiple interfaces can be implemented by a single class.
+
+### 💻 Example:
+
+```csharp
+public interface IWork
+{
+    void DoWork();
+}
+
+public interface IStudy
+{
+    void DoStudy();
+}
+
+public class Person : IWork, IStudy
+{
+    public void DoWork() => Console.WriteLine("Working...");
+    public void DoStudy() => Console.WriteLine("Studying...");
+}
+
+// Usage
+var person = new Person();
+person.DoWork();
+person.DoStudy();
+```
+
+---
+
+## 5. 🔹 Hybrid Inheritance
+
+Hybrid inheritance is a combination of two or more types of inheritance. Though C# doesn’t support hybrid inheritance through classes due to ambiguity (diamond problem), it can be mimicked using interfaces.
+
+---
+
+## ✅ Summary Table
+
+| Type         | Supported in C# | Method               |
+|--------------|------------------|----------------------|
+| Single       | ✅               | Classes              |
+| Multilevel   | ✅               | Classes              |
+| Hierarchical | ✅               | Classes              |
+| Multiple     | ✅               | Interfaces           |
+| Hybrid       | ⚠️ (Limited)     | Interfaces & Classes |
+
+---
+
+## 📌 Note on Diamond Problem
+
+In languages that support multiple class inheritance (like C++), a class may inherit from two classes that share a common base class, leading to ambiguity.  
+C# avoids this issue by not supporting multiple class inheritance, encouraging interface usage instead.
+
+---
+
 ## 🎭 Polymorphism
 
 **Polymorphism** allows objects to be treated as instances of their parent class rather than their actual class, enabling method overriding and flexibility.
