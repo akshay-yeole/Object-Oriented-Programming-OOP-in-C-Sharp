@@ -1,5 +1,5 @@
 
-# 👨‍💻 Object-Oriented Programming (OOP) in C# – Akshay Yeole
+# 👨‍💻 Object-Oriented Programming (OOP) in C#
 
 Welcome to the **Object-Oriented Programming (OOP) in C#** repository by **Akshay Yeole**.  
 This beginner-friendly resource helps you understand the four core principles of OOP in C#:
