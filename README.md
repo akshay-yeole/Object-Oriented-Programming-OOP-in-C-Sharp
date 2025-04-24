@@ -120,6 +120,59 @@ It's only for classes, structs, or interfaces—not methods or properties.
 ## Partial Method
 In C#, a partial method allows you to define a method signature in one part of a partial class and implement it in another part. This provides flexibility when working with auto-generated code and custom logic, as you can define methods without requiring their immediate implementation.
 
+Key Points About Partial Methods:
+Declared in Partial Classes/Structs: Partial methods must reside within a partial class or struct.
+
+Optional Implementation: The implementation of a partial method is optional. If it's not implemented, the compiler removes it (along with any calls to it) during compilation, ensuring no performance overhead.
+
+No Access Modifiers: Partial methods are implicitly private and cannot have access modifiers like public or protected.
+
+Return Type: They must return void. Partial methods cannot return any value.
+
+Syntax Example:
+File 1: PartialClassPart1.cs
+```c#
+public partial class MyClass
+{
+    // Declaration of a partial method
+    partial void OnStart();
+
+    public void Start()
+    {
+        Console.WriteLine("Starting...");
+        OnStart(); // Call the partial method
+    }
+}
+
+```
+File 2: PartialClassPart2.cs
+```c#
+public partial class MyClass
+{
+    // Implementation of the partial method
+    partial void OnStart()
+    {
+        Console.WriteLine("OnStart method executed!");
+    }
+}
+```
+Usage:
+```c#
+MyClass obj = new MyClass();
+obj.Start();
+// Output:
+// Starting...
+// OnStart method executed!
+```
+If the OnStart method isn't implemented in the second file, the call to OnStart() in Start() will simply be ignored at compile time.
+
+Benefits of Partial Methods:
+Seamless integration with auto-generated code, like in tools or frameworks.
+
+Avoids cluttering code with unused methods, as unused partial methods are removed at compile time.
+
+Enhances modularity and collaboration on large projects.
+
 ## 🔒 Encapsulation
 
 **Encapsulation** means bundling data (fields) and methods that operate on that data into a single unit — usually a class. It also restricts direct access to some of the object’s components.
