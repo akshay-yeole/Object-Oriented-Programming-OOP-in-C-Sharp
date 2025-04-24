@@ -400,6 +400,64 @@ Runtime Behavior: At runtime, the method to be executed is determined based on t
 
 This dynamic behavior is essential for creating flexible and extensible systems. It enables method calls to be dynamically dispatched, depending on the object's runtime type. Let me know if you'd like more clarification!
 
+Method Hiding : 
+Method Hiding occurs when a derived class defines a method with the same name as a method in the base class but does not override it. Instead, it hides the base class method, and the behavior depends on the type of the reference used to call the method. The new keyword is used to explicitly indicate that the method in the derived class is intended to hide the method in the base class.
+
+Example:
+```c#
+using System;
+
+public class BaseClass
+{
+    public void Display()
+    {
+        Console.WriteLine("This is the Display method in the BaseClass.");
+    }
+}
+
+public class DerivedClass : BaseClass
+{
+    // Method hiding
+    public new void Display()
+    {
+        Console.WriteLine("This is the Display method in the DerivedClass.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        BaseClass baseObj = new BaseClass();
+        baseObj.Display(); // Calls BaseClass method
+
+        DerivedClass derivedObj = new DerivedClass();
+        derivedObj.Display(); // Calls DerivedClass method
+
+        // Base class reference to a derived class object
+        BaseClass polymorphicObj = new DerivedClass();
+        polymorphicObj.Display(); // Calls BaseClass method (hiding is not polymorphic)
+
+        Console.ReadLine();
+    }
+}
+
+```
+Explanation:
+BaseClass Method:
+
+The BaseClass contains a Display method.
+
+DerivedClass Method:
+
+The DerivedClass defines its own Display method and uses the new keyword to hide the base class method.
+
+Behavior:
+
+When calling Display using a DerivedClass reference, the derived class method is executed.
+
+However, if a base class reference is used to call Display (even when it points to a DerivedClass object), the base class method is called.
+
 🔜 Coming soon with:
 
 - ✅ Clear explanations  
@@ -410,7 +468,6 @@ This dynamic behavior is essential for creating flexible and extensible systems.
 
 ## 📂 Upcoming Content
 
-- 🎭 Polymorphism in depth
 - 🏗 SOLID Principles
 - 🧪 Unit Testing with OOP
 - 🔁 Composition vs Inheritance
