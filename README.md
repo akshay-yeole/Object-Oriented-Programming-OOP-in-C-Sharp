@@ -117,6 +117,9 @@ The class must exist in the same namespace across all files.
 
 It's only for classes, structs, or interfaces—not methods or properties.
 
+## Partial Method
+In C#, a partial method allows you to define a method signature in one part of a partial class and implement it in another part. This provides flexibility when working with auto-generated code and custom logic, as you can define methods without requiring their immediate implementation.
+
 ## 🔒 Encapsulation
 
 **Encapsulation** means bundling data (fields) and methods that operate on that data into a single unit — usually a class. It also restricts direct access to some of the object’s components.
