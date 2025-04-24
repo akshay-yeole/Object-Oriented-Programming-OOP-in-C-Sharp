@@ -298,6 +298,107 @@ C# avoids the diamond problem by not allowing multiple class inheritance. Instea
 ## 🎭 Polymorphism
 
 **Polymorphism** allows objects to be treated as instances of their parent class rather than their actual class.
+Poly means many and morph means behaviours.
+
+Types of polymorphism :
+1. static polymorphism | Early Binding
+2. dynamic polymorphism | Late Binding
+
+We can implement polymorphism by overloading, overriding and hiding data.
+
+Early Binding
+Earli binding is a type of polymorphism in object-oriented programming that is resolved during the compilation of the program. It allows methods to be overloaded based on their parameter types or numbers, enabling different implementations of the same method name within a class.
+
+Example :
+method overloading is a classic example of compile-time polymorphism:
+```c#
+public class Calculator
+{
+    // Method with two parameters
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    // Overloaded method with three parameters
+    public int Add(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Calculator calc = new Calculator();
+        
+        Console.WriteLine(calc.Add(5, 10)); // Calls the method with two parameters
+        Console.WriteLine(calc.Add(5, 10, 15)); // Calls the method with three parameters
+    }
+}
+```
+In this example, the Add method is overloaded, and the correct implementation is chosen based on the number of arguments at compile time. This is distinct from runtime polymorphism, which is resolved during program execution. Let me know if you need more examples!
+
+Late Binding : 
+Late binding is a type of polymorphism in object-oriented programming that is resolved during the execution of the program. It allows a method to be overridden in a derived class, enabling different behavior based on the runtime type of the object.
+
+Example :
+method overriding is a typical example of runtime polymorphism achieved using inheritance and the virtual, override, and base keywords:
+```c#
+public class Animal
+{
+    // Virtual method in the base class
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("Animal makes a sound.");
+    }
+}
+
+public class Dog : Animal
+{
+    // Overriding the virtual method
+    public override void MakeSound()
+    {
+        Console.WriteLine("Dog barks.");
+    }
+}
+
+public class Cat : Animal
+{
+    // Overriding the virtual method
+    public override void MakeSound()
+    {
+        Console.WriteLine("Cat meows.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Animal myAnimal;
+
+        // Runtime polymorphism in action
+        myAnimal = new Dog();
+        myAnimal.MakeSound(); // Output: Dog barks.
+
+        myAnimal = new Cat();
+        myAnimal.MakeSound(); // Output: Cat meows.
+
+        Console.ReadLine();
+    }
+}
+
+```
+Explanation:
+Virtual Method: The base class Animal declares a method MakeSound as virtual, allowing it to be overridden.
+
+Override Method: Derived classes Dog and Cat override MakeSound to provide their own implementation.
+
+Runtime Behavior: At runtime, the method to be executed is determined based on the actual type of the object (Dog or Cat), not the declared type (Animal).
+
+This dynamic behavior is essential for creating flexible and extensible systems. It enables method calls to be dynamically dispatched, depending on the object's runtime type. Let me know if you'd like more clarification!
 
 🔜 Coming soon with:
 
