@@ -12,6 +12,111 @@ This beginner-friendly resource helps you understand the four core principles of
 
 ---
 
+## Class
+A class in C# is a fundamental building block of object-oriented programming (OOP). It serves as a blueprint or template to define the properties and behaviors of objects. Essentially, a class encapsulates data (fields) and functions (methods) that operate on the data, promoting modularity, reusability, and organized code structure.
+
+Key Features of a Class:
+Fields: Variables that store the data of the class.
+
+Properties: Special methods to access and manipulate fields in a controlled way.
+
+Methods: Functions that define the behavior or actions of the class.
+
+Constructors: Special methods to initialize objects of the class.
+
+Access Modifiers: Define the visibility of members (e.g., public, private, protected).
+
+Syntax Example:
+Here’s a basic example of a C# class:
+
+```c#
+public class Car
+{
+    // Fields
+    private string brand;
+    private int speed;
+
+    // Constructor
+    public Car(string carBrand, int carSpeed)
+    {
+        brand = carBrand;
+        speed = carSpeed;
+    }
+
+    // Property
+    public string Brand
+    {
+        get { return brand; }
+        set { brand = value; }
+    }
+
+    // Method
+    public void Drive()
+    {
+        Console.WriteLine($"{brand} is driving at {speed} km/h.");
+    }
+}
+
+```
+Usage:
+You can create objects and use their methods like this:
+```c#
+Car myCar = new Car("Tesla", 120);
+myCar.Drive(); // Output: Tesla is driving at 120 km/h.
+```
+Notes:
+Classes can be extended using inheritance, meaning one class can derive from another.
+
+Static classes are used when you don’t need to create instances of a class.
+
+## Partial Class
+In C#, a partial class allows you to split the definition of a class into multiple files. This can be especially useful when working on large projects with lengthy class definitions or when multiple developers are collaborating on the same class. The compiler combines all parts of a partial class into a single class during compilation.
+
+### Key Features of Partial Classes:
+Code Separation: Keep your code well-organized and easier to read.
+
+Collaboration: Multiple developers can work on different parts of the same class without conflicts.
+
+Generated Code: Useful when part of the class definition is auto-generated (e.g., in tools like Visual Studio's designer).
+
+Syntax Example:
+Here’s how partial classes work:
+File 1: PartialClassPart1.cs
+```c#
+public partial class MyClass
+{
+    public void Method1()
+    {
+        Console.WriteLine("Method1 executed!");
+    }
+}
+
+```
+File 2: PartialClassPart2.cs
+```c#
+public partial class MyClass
+{
+    public void Method2()
+    {
+        Console.WriteLine("Method2 executed!");
+    }
+}
+
+```
+Usage:
+```c#
+MyClass obj = new MyClass();
+obj.Method1();
+obj.Method2();
+
+```
+Notes:
+All parts of the partial class must be marked with the partial keyword.
+
+The class must exist in the same namespace across all files.
+
+It's only for classes, structs, or interfaces—not methods or properties.
+
 ## 🔒 Encapsulation
 
 **Encapsulation** means bundling data (fields) and methods that operate on that data into a single unit — usually a class. It also restricts direct access to some of the object’s components.
