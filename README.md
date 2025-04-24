@@ -173,6 +173,70 @@ Avoids cluttering code with unused methods, as unused partial methods are remove
 
 Enhances modularity and collaboration on large projects.
 
+## sealed class
+In C#, a sealed class is a class that cannot be inherited by other classes. This is useful when you want to restrict the extension of a class, ensuring that no other class can derive from it. You can declare a sealed class using the sealed keyword.
+
+```c#
+sealed class MySealedClass
+{
+    public void DisplayMessage()
+    {
+        Console.WriteLine("This is a sealed class.");
+    }
+}
+
+// The following will cause a compilation error because MySealedClass is sealed:
+// class DerivedClass : MySealedClass { }
+
+```
+
+Key points about sealed classes:
+
+A sealed class can be instantiated, but it cannot serve as a base class.
+
+You often use sealed classes to enhance security, prevent unintended behavior from inheritance, or optimize performance by allowing certain compiler optimizations.
+
+Structs in C# are implicitly sealed, meaning you can't inherit from a struct.
+
+## Sealed Method
+In C#, a sealed method is a method in a derived class that cannot be overridden by further derived classes. You can declare a sealed method by using the sealed keyword, which must be used alongside the override keyword.
+
+This is typically done to prevent changes to the implementation of a method in classes that further derive from the current one.
+
+```c#
+class BaseClass
+{
+    public virtual void DisplayMessage()
+    {
+        Console.WriteLine("Message from BaseClass.");
+    }
+}
+
+class DerivedClass : BaseClass
+{
+    public sealed override void DisplayMessage()
+    {
+        Console.WriteLine("Message from DerivedClass.");
+    }
+}
+
+// The following will cause a compilation error because DisplayMessage is sealed:
+// class FurtherDerivedClass : DerivedClass
+// {
+//     public override void DisplayMessage()
+//     {
+//         Console.WriteLine("Message from FurtherDerivedClass.");
+//     }
+// }
+
+```
+Key Points:
+A sealed method must override a method from a base class.
+
+Once sealed, the method cannot be overridden in further derived classes.
+
+This can be used to enforce behavior consistency and enhance security in your application design.
+
 ## 🔒 Encapsulation
 
 **Encapsulation** means bundling data (fields) and methods that operate on that data into a single unit — usually a class. It also restricts direct access to some of the object’s components.
@@ -619,6 +683,97 @@ Behavior:
 When calling Display using a DerivedClass reference, the derived class method is executed.
 
 However, if a base class reference is used to call Display (even when it points to a DerivedClass object), the base class method is called.
+
+# Extension Methods in C#
+
+An **extension method** in C# allows you to add new methods to an existing type without modifying the original type or creating a derived type. This is particularly useful when you want to add functionality to classes that you don't own or can't change, like built-in .NET classes.
+
+## How to Create an Extension Method
+
+1. **Static Class:** Define a static class to contain the extension method.
+2. **Static Method:** The method itself must also be `static`.
+3. **`this` Keyword:** Add the `this` modifier to the first parameter of the method. The `this` keyword specifies which type the method will extend.
+
+### Syntax
+```csharp
+public static class MyExtensions
+{
+    public static ReturnType MethodName(this TargetType target, params)
+    {
+        // Method logic here
+    }
+}
+```
+Example: Extension Method for string
+
+Let's add an extension method to the string class to check if a string contains only digits.
+
+```c#
+using System;
+
+public static class StringExtensions
+{
+    public static bool IsNumeric(this string input)
+    {
+        foreach (char c in input)
+        {
+            if (!char.IsDigit(c))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string test = "12345";
+        Console.WriteLine(test.IsNumeric()); // Output: True
+
+        string test2 = "12a45";
+        Console.WriteLine(test2.IsNumeric()); // Output: False
+    }
+}
+
+```
+
+Key Points About Extension Methods
+Static Class: Extension methods must be defined in a static class.
+
+Namespaces: To use an extension method, the namespace where it is defined must be imported with a using directive.
+
+Enhancing Readability: They allow you to call the method as if it were a member of the original type.
+
+Non-invasive: Extension methods do not actually modify the original type.
+
+Real-World Use Case
+```c#
+using System;
+
+public static class DateTimeExtensions
+{
+    public static int Age(this DateTime birthDate)
+    {
+        var today = DateTime.Today;
+        int age = today.Year - birthDate.Year;
+        if (birthDate.Date > today.AddYears(-age)) age--;
+        return age;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        DateTime birthDate = new DateTime(1990, 4, 24);
+        Console.WriteLine($"Age: {birthDate.Age()}"); // Example Output: Age: 35
+    }
+}
+
+```
 
 🔜 Coming soon with:
 
