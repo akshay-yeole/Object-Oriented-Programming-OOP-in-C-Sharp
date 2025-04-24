@@ -1,5 +1,6 @@
 
-# 👨‍💻 Object-Oriented Programming (OOP) in C#
+# 👨‍💻 Object-Oriented Programming (OOP) in C# 
+![GitHub stars](https://img.shields.io/github/stars/akshay-yeole/Object-Oriented-Programming-OOP-in-C-Sharp)
 
 Welcome to the **Object-Oriented Programming (OOP) in C#** repository by **Akshay Yeole**.  
 This beginner-friendly resource helps you understand the four core principles of OOP in C#:
