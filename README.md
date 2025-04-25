@@ -15,7 +15,7 @@ This beginner-friendly resource helps you understand the four core principles of
 ## Class
 A class in C# is a fundamental building block of object-oriented programming (OOP). It serves as a blueprint or template to define the properties and behaviors of objects. Essentially, a class encapsulates data (fields) and functions (methods) that operate on the data, promoting modularity, reusability, and organized code structure.
 
-Key Features of a Class:
+### Key Features of a Class:
 Fields: Variables that store the data of the class.
 
 Properties: Special methods to access and manipulate fields in a controlled way.
@@ -26,7 +26,7 @@ Constructors: Special methods to initialize objects of the class.
 
 Access Modifiers: Define the visibility of members (e.g., public, private, protected).
 
-Syntax Example:
+### Syntax Example:
 Here’s a basic example of a C# class:
 
 ```c#
@@ -58,13 +58,13 @@ public class Car
 }
 
 ```
-Usage:
+### Usage:
 You can create objects and use their methods like this:
 ```c#
 Car myCar = new Car("Tesla", 120);
 myCar.Drive(); // Output: Tesla is driving at 120 km/h.
 ```
-Notes:
+### Notes:
 Classes can be extended using inheritance, meaning one class can derive from another.
 
 Static classes are used when you don’t need to create instances of a class.
@@ -79,7 +79,7 @@ Collaboration: Multiple developers can work on different parts of the same class
 
 Generated Code: Useful when part of the class definition is auto-generated (e.g., in tools like Visual Studio's designer).
 
-Syntax Example:
+### Syntax Example:
 Here’s how partial classes work:
 File 1: PartialClassPart1.cs
 ```c#
@@ -103,14 +103,14 @@ public partial class MyClass
 }
 
 ```
-Usage:
+### Usage:
 ```c#
 MyClass obj = new MyClass();
 obj.Method1();
 obj.Method2();
 
 ```
-Notes:
+### Notes:
 All parts of the partial class must be marked with the partial keyword.
 
 The class must exist in the same namespace across all files.
@@ -120,7 +120,7 @@ It's only for classes, structs, or interfaces—not methods or properties.
 ## Partial Method
 In C#, a partial method allows you to define a method signature in one part of a partial class and implement it in another part. This provides flexibility when working with auto-generated code and custom logic, as you can define methods without requiring their immediate implementation.
 
-Key Points About Partial Methods:
+### Key Points About Partial Methods:
 Declared in Partial Classes/Structs: Partial methods must reside within a partial class or struct.
 
 Optional Implementation: The implementation of a partial method is optional. If it's not implemented, the compiler removes it (along with any calls to it) during compilation, ensuring no performance overhead.
@@ -129,7 +129,7 @@ No Access Modifiers: Partial methods are implicitly private and cannot have acce
 
 Return Type: They must return void. Partial methods cannot return any value.
 
-Syntax Example:
+### Syntax Example:
 File 1: PartialClassPart1.cs
 ```c#
 public partial class MyClass
@@ -156,7 +156,7 @@ public partial class MyClass
     }
 }
 ```
-Usage:
+### Usage:
 ```c#
 MyClass obj = new MyClass();
 obj.Start();
@@ -166,7 +166,7 @@ obj.Start();
 ```
 If the OnStart method isn't implemented in the second file, the call to OnStart() in Start() will simply be ignored at compile time.
 
-Benefits of Partial Methods:
+### Benefits of Partial Methods:
 Seamless integration with auto-generated code, like in tools or frameworks.
 
 Avoids cluttering code with unused methods, as unused partial methods are removed at compile time.
@@ -190,7 +190,7 @@ sealed class MySealedClass
 
 ```
 
-Key points about sealed classes:
+### Key points about sealed classes:
 
 A sealed class can be instantiated, but it cannot serve as a base class.
 
@@ -230,7 +230,7 @@ class DerivedClass : BaseClass
 // }
 
 ```
-Key Points:
+### Key Points:
 A sealed method must override a method from a base class.
 
 Once sealed, the method cannot be overridden in further derived classes.
@@ -526,16 +526,16 @@ C# avoids the diamond problem by not allowing multiple class inheritance. Instea
 **Polymorphism** allows objects to be treated as instances of their parent class rather than their actual class.
 Poly means many and morph means behaviours.
 
-Types of polymorphism :
+### Types of polymorphism :
 1. static polymorphism | Early Binding
 2. dynamic polymorphism | Late Binding
 
 We can implement polymorphism by overloading, overriding and hiding data.
 
-Early Binding
+### Early Binding
 Earli binding is a type of polymorphism in object-oriented programming that is resolved during the compilation of the program. It allows methods to be overloaded based on their parameter types or numbers, enabling different implementations of the same method name within a class.
 
-Example :
+### Example :
 method overloading is a classic example of compile-time polymorphism:
 ```c#
 public class Calculator
@@ -566,10 +566,10 @@ class Program
 ```
 In this example, the Add method is overloaded, and the correct implementation is chosen based on the number of arguments at compile time. This is distinct from runtime polymorphism, which is resolved during program execution. Let me know if you need more examples!
 
-Late Binding : 
+### Late Binding : 
 Late binding is a type of polymorphism in object-oriented programming that is resolved during the execution of the program. It allows a method to be overridden in a derived class, enabling different behavior based on the runtime type of the object.
 
-Example :
+### Example :
 method overriding is a typical example of runtime polymorphism achieved using inheritance and the virtual, override, and base keywords:
 ```c#
 public class Animal
@@ -617,7 +617,7 @@ class Program
 }
 
 ```
-Explanation:
+### Explanation:
 Virtual Method: The base class Animal declares a method MakeSound as virtual, allowing it to be overridden.
 
 Override Method: Derived classes Dog and Cat override MakeSound to provide their own implementation.
@@ -626,10 +626,10 @@ Runtime Behavior: At runtime, the method to be executed is determined based on t
 
 This dynamic behavior is essential for creating flexible and extensible systems. It enables method calls to be dynamically dispatched, depending on the object's runtime type. Let me know if you'd like more clarification!
 
-Method Hiding : 
+### Method Hiding : 
 Method Hiding occurs when a derived class defines a method with the same name as a method in the base class but does not override it. Instead, it hides the base class method, and the behavior depends on the type of the reference used to call the method. The new keyword is used to explicitly indicate that the method in the derived class is intended to hide the method in the base class.
 
-Example:
+### Example:
 ```c#
 using System;
 
@@ -669,7 +669,7 @@ class Program
 }
 
 ```
-Explanation:
+### Explanation:
 BaseClass Method:
 
 The BaseClass contains a Display method.
@@ -704,7 +704,7 @@ public static class MyExtensions
     }
 }
 ```
-Example: Extension Method for string
+### Example: Extension Method for string
 
 Let's add an extension method to the string class to check if a string contains only digits.
 
@@ -740,7 +740,7 @@ class Program
 
 ```
 
-Key Points About Extension Methods
+### Key Points About Extension Methods
 Static Class: Extension methods must be defined in a static class.
 
 Namespaces: To use an extension method, the namespace where it is defined must be imported with a using directive.
@@ -749,7 +749,7 @@ Enhancing Readability: They allow you to call the method as if it were a member 
 
 Non-invasive: Extension methods do not actually modify the original type.
 
-Real-World Use Case
+### Real-World Use Case
 ```c#
 using System;
 
