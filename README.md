@@ -775,6 +775,13 @@ class Program
 
 ```
 
+## Collections
+Collections in C# are used to store, manage, and manipulate groups of objects. They provide a way to work with multiple data items efficiently, offering functionality such as sorting, searching, and accessing elements.
+Here are the main types of collections in C#:
+
+### 1. Arrays
+
+
 🔜 Coming soon with:
 
 - ✅ Clear explanations  
